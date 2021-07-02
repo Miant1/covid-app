@@ -1,0 +1,16 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+h1,h2,h3,h4,p,
+a,span,ul,li{
+    margin: 0;
+    padding: 0;
+}
+.app{
+    padding: 20px 30px;
+
+    @media (min-width: 1680px){
+        padding: 40px 60px;
+    }
+}
