@@ -3,12 +3,25 @@ import Header from "./components/header/Header";
 import CountryList from "./components/country-list/CountryList";
 import {useEffect, useState} from "react";
 import axios from "axios";
+import Popup from "./components/popup/Popup";
 
 function App() {
 
     const [items, setItems] = useState([]);
     const [search, setSearch] = useState('');
     const [filteredCountries, setFilteredCountries] = useState([]);
+    const [showPopup, setShowPopup] = useState(false);
+    const [selectedCountry, setSelectedCountry] = useState([])
+
+    const handleClick = (selectedItem) => {
+        setSelectedCountry(selectedItem);
+        setShowPopup(true);
+    }
+
+    const hidePopup = () => {
+        setShowPopup(false);
+    }
+
 
     useEffect(() => {
         axios
@@ -27,7 +40,8 @@ function App() {
   return (
     <div className={style.app}>
       <Header search={search} setSearch={setSearch}/>
-      <CountryList filteredCountries={filteredCountries}/>
+      <CountryList handleClick={handleClick} filteredCountries={filteredCountries}/>
+        {showPopup && <Popup selectedCountry={selectedCountry} hidePopup={hidePopup}/>}
     </div>
   );
 }

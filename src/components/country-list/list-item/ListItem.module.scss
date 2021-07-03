@@ -8,6 +8,14 @@
 
     margin-bottom: 15px;
 
+    cursor: pointer;
+
+    transition: background 0.2s;
+
+    &:hover{
+        background: #f6f6f6;
+    }
+
     .number{
         width: 4.3%;
         font-family: Roboto;

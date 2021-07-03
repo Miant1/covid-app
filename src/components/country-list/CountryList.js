@@ -1,7 +1,7 @@
 import style from './CountryList.module.scss'
 import ListItem from "./list-item/ListItem";
 
-const CountryList = ({filteredCountries}) => {
+const CountryList = ({filteredCountries, handleClick}) => {
     return (
         <div className={style.wrapper}>
             <div className={style.listHeader}>
@@ -10,7 +10,7 @@ const CountryList = ({filteredCountries}) => {
                 <p className={style.cases}>Total Confirmed</p>
             </div>
 
-            <ListItem filteredCountries={filteredCountries}/>
+            <ListItem handleClick={handleClick} filteredCountries={filteredCountries}/>
         </div>
     )
 }
