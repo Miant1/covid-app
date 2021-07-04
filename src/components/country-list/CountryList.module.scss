@@ -19,38 +19,95 @@
             border-right: 1px #fff solid;
             padding: 22px 0;
         }
-        .country{
+        .countryWrapper{
+            display: flex;
+            align-items: center;
+
             width: 64.4%;
 
-            font-family: Roboto;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
+            .country{
+                width: auto;
 
-            padding: 22px 0 22px 15px;
-            border-right: 1px #fff solid;
+                font-family: Roboto;
+                font-size: 18px;
+                font-weight: 700;
+                color: #fff;
+
+                padding: 22px 0 22px 15px;
+                margin-right: 10px;
+            }
+
+            i{
+                font-size: 22px;
+                color: #fff;
+
+                margin-right: 10px;
+                cursor: pointer;
+            }
         }
-        .cases{
+
+        .casesWrapper{
+            display: flex;
+            align-items: center;
+
             width: 31.3%;
 
-            font-family: Roboto;
-            font-size: 18px;
-            font-weight: 700;
-            color: #fff;
+            .cases{
+                width: auto;
 
-            padding: 22px 0 22px 15px;
+                font-family: Roboto;
+                font-size: 18px;
+                font-weight: 700;
+                color: #fff;
+
+                padding: 22px 0 22px 15px;
+                border-left: 1px #fff solid;
+
+                margin-right: 10px;
+            }
+
+            i{
+                font-size: 22px;
+                color: #fff;
+
+                margin-right: 10px;
+                cursor: pointer;
+            }
         }
+
     }
     @media (min-width: 1680px){
         .listHeader{
             border-radius: 20px;
             margin-bottom: 20px;
 
-            .number, .country, .cases{
+            .number{
                 font-size: 24px;
 
                 padding-top: 26px;
                 padding-bottom: 26px;
+            }
+            .countryWrapper{
+                i{
+                    font-size: 26px;
+                }
+                .country{
+                    font-size: 24px;
+
+                    padding-top: 26px;
+                    padding-bottom: 26px;
+                }
+            }
+            .casesWrapper{
+                i{
+                    font-size: 26px;
+                }
+                .cases{
+                    font-size: 24px;
+
+                    padding-top: 26px;
+                    padding-bottom: 26px;
+                }
             }
         }
 

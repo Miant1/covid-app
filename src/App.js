@@ -11,7 +11,11 @@ function App() {
     const [search, setSearch] = useState('');
     const [filteredCountries, setFilteredCountries] = useState([]);
     const [showPopup, setShowPopup] = useState(false);
-    const [selectedCountry, setSelectedCountry] = useState([])
+    const [selectedCountry, setSelectedCountry] = useState([]);
+
+    const updateOnLogo = () => {
+        window.location.reload();
+    }
 
     const handleClick = (selectedItem) => {
         setSelectedCountry(selectedItem);
@@ -21,7 +25,6 @@ function App() {
     const hidePopup = () => {
         setShowPopup(false);
     }
-
 
     useEffect(() => {
         axios
@@ -37,10 +40,43 @@ function App() {
         );
     }, [search, items]);
 
+    const sortByCasesDown = () => {
+        const sortedAscending = [...filteredCountries].sort((a, b) => parseInt(a.TotalConfirmed) - parseInt(b.TotalConfirmed));
+        setFilteredCountries(sortedAscending)
+    }
+    const sortByCasesUp = () => {
+        const sortedDescending = [...filteredCountries].sort((a, b) => parseInt(b.TotalConfirmed) - parseInt(a.TotalConfirmed));
+        setFilteredCountries(sortedDescending)
+    }
+    const sortByContryDes = () => {
+        const sortedDescending = [...filteredCountries]
+            .sort((a, b) => {
+                if(a.Country > b.Country) { return -1; }
+                if(a.Country < b.Country) { return 1; }
+                return 0;
+            });
+        setFilteredCountries(sortedDescending)
+    }
+    const sortByContryAsc = () => {
+        const sortedAsceding = [...filteredCountries]
+            .sort((a, b) => {
+                if(a.Country < b.Country) { return -1; }
+                if(a.Country > b.Country) { return 1; }
+                return 0;
+            });
+        setFilteredCountries(sortedAsceding)
+    }
   return (
     <div className={style.app}>
-      <Header search={search} setSearch={setSearch}/>
-      <CountryList handleClick={handleClick} filteredCountries={filteredCountries}/>
+      <Header updateOnLogo={updateOnLogo} search={search} setSearch={setSearch}/>
+      <CountryList
+          sortByCasesDown={sortByCasesDown}
+          sortByCasesUp={sortByCasesUp}
+          handleClick={handleClick}
+          filteredCountries={filteredCountries}
+          sortByContryDes={sortByContryDes}
+          sortByContryAsc={sortByContryAsc}/>
+
         {showPopup && <Popup selectedCountry={selectedCountry} hidePopup={hidePopup}/>}
     </div>
   );
